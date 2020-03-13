@@ -117,7 +117,29 @@ bool IOLoginData::loginserverAuthentication(const std::string& name, const std::
 	return true;
 }
 
-uint32_t IOLoginData::gameworldAuthentication(const std::string& accountName, const std::string& password, std::string& characterName, std::string& token, uint32_t tokenTime)
+std::string IOLoginData::generateFlashSessionKey(const std::string& token)
+{
+	if (token.empty()) {
+		return "0";
+	}
+
+	Database& db = Database::getInstance();
+
+	std::ostringstream query;
+	query << "SELECT `name`, `password`, `secret`  FROM `accounts` WHERE `flash_token` = " << db.escapeString(token);
+	DBResult_ptr result = db.storeQuery(query.str());
+	if (!result) {
+		return "0 \n 0"; // User has logged in with flash on another tab and flash_token value now doesn't match
+	}
+
+	std::string accountName = result->getString("name");
+	std::string password = result->getString("password");
+	std::string secret = decodeSecret(result->getString("secret"));
+
+	return accountName + "\n" + password + "\n" + secret + "\n 0";
+}
+
+uint32_t IOLoginData::gameworldAuthentication(const std::string& accountName, const std::string& password, std::string& characterName, std::string& token, uint32_t tokenTime, OperatingSystem_t operatingSystem)
 {
 	Database& db = Database::getInstance();
 
@@ -140,8 +162,15 @@ uint32_t IOLoginData::gameworldAuthentication(const std::string& accountName, co
 		}
 	}
 
-	if (transformToSHA1(password) != result->getString("password")) {
-		return 0;
+	if (operatingSystem == CLIENTOS_FLASH) {
+		// We don't have the raw password just the sh1 hash
+		if (password != result->getString("password")) {
+			return 0;
+		}
+	} else {
+		if (transformToSHA1(password) != result->getString("password")) {
+			return 0;
+		}
 	}
 
 	uint32_t accountId = result->getNumber<uint32_t>("id");

@@ -1096,13 +1096,13 @@
 	</item>
 	<item id="1739" article="a" name="crate">
 		<attribute key="weight" value="8000" />
-		<attribute key="containerSize" value="15" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="destroyTo" value="2250" />
 	</item>
 	<item id="1740" article="a" name="chest">
 		<attribute key="weight" value="12000" />
 		<attribute key="rotateTo" value="1748" />
-		<attribute key="containerSize" value="15" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="destroyTo" value="2251" />
 	</item>
 	<item id="1741" article="a" name="box">
@@ -1125,19 +1125,19 @@
 	<item id="1747" article="a" name="chest">
 		<attribute key="weight" value="12000" />
 		<attribute key="rotateTo" value="1749" />
-		<attribute key="containerSize" value="15" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="destroyTo" value="2251" />
 	</item>
 	<item id="1748" article="a" name="chest">
 		<attribute key="weight" value="12000" />
 		<attribute key="rotateTo" value="1747" />
-		<attribute key="containerSize" value="15" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="destroyTo" value="2251" />
 	</item>
 	<item id="1749" article="a" name="chest">
 		<attribute key="weight" value="12000" />
 		<attribute key="rotateTo" value="1740" />
-		<attribute key="containerSize" value="15" />
+		<attribute key="containerSize" value="99" />
 		<attribute key="destroyTo" value="2251" />
 	</item>
 	<item id="1750" article="a" name="large trunk">
@@ -9192,7 +9192,7 @@
 	<item id="5800" article="a" name="grappling hook" />
 	<item id="5801" article="a" name="jewelled backpack">
 		<attribute key="weight" value="1700" />
-		<attribute key="containerSize" value="22" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="slotType" value="backpack" />
 	</item>
 	<item id="5802" article="a" name="message in a bottle">
@@ -27149,11 +27149,11 @@
 		<attribute key="rotateTo" value="20295" />
 	</item>
 	<item id="20297" article="a" name="wardrobe">
-		<attribute key="containerSize" value="10" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="rotateTo" value="20298" />
 	</item>
 	<item id="20298" article="a" name="wardrobe">
-		<attribute key="containerSize" value="10" />
+		<attribute key="containerSize" value="999" />
 		<attribute key="rotateTo" value="20297" />
 	</item>
 	<item id="20299" article="a" name="drawer">

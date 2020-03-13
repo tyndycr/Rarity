@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Target" nameDescription="a practice target" race="blood" experience="0" speed="0" manacost="0">
+	<health now="30000" max="30000" />
+	<look typeex="5777" corpse="2255" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="5" />
+		<flag staticattack="0" />
+		<flag runonhealth="0" />
+	</flags>
+	<defenses armor="2" defense="3">
+			<defense name="healing" interval="3000" chance="50" min="5500" max="7500">
+		</defense>
+	</defenses>
+</monster>

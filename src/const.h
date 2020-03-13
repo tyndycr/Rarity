@@ -184,6 +184,7 @@ enum SpeakClasses : uint8_t {
 	TALKTYPE_PRIVATE_TO = 5,
 	TALKTYPE_CHANNEL_Y = 7,
 	TALKTYPE_CHANNEL_O = 8,
+	TALKTYPE_SPELL = 9,
 	TALKTYPE_PRIVATE_NP = 10,
 	TALKTYPE_PRIVATE_PN = 12,
 	TALKTYPE_BROADCAST = 13,
@@ -197,7 +198,7 @@ enum SpeakClasses : uint8_t {
 };
 
 enum MessageClasses : uint8_t {
-	MESSAGE_STATUS_CONSOLE_BLUE = 4, /*FIXME Blue message in the console*/
+	MESSAGE_STATUS_CONSOLE_BLUE = 22, /*Blue this debugs the flash client*/
 
 	MESSAGE_STATUS_CONSOLE_RED = 13, /*Red message in the console*/
 

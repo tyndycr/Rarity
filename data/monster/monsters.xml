@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <monsters>
+	<!-- Test Creatures -->
+	<monster name="Target East" file="Shapeshifters/targete.xml" />
+	<monster name="Target South" file="Shapeshifters/targets.xml" />
+	<monster name="Dummy East" file="Shapeshifters/dummye.xml" />
+	<monster name="Dummy South" file="Shapeshifters/dummys.xml" />
+	<monster name="Dragon Rider" file="Bosses/dragon rider.xml" />
+
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml" />
 	<monster name="Valkyrie" file="Amazons/valkyrie.xml" />

@@ -52,7 +52,6 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 	}
 
 	uint32_t ticks = time(nullptr) / AUTHENTICATOR_PERIOD;
-
 	auto output = OutputMessagePool::getOutputMessage();
 	if (!account.key.empty()) {
 		if (token.empty() || !(token == generateToken(account.key, ticks) || token == generateToken(account.key, ticks - 1) || token == generateToken(account.key, ticks + 1))) {
@@ -86,11 +85,8 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 	//Add char list
 	output->addByte(0x64);
 
-	uint8_t size = std::min<size_t>(std::numeric_limits<uint8_t>::max(), account.characters.size());
-
 	if (g_config.getBoolean(ConfigManager::ONLINE_OFFLINE_CHARLIST)) {
 		output->addByte(2); // number of worlds
-
 		for (uint8_t i = 0; i < 2; i++) {
 			output->addByte(i); // world id
 			output->addString(i == 0 ? "Offline" : "Online");
@@ -107,6 +103,7 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 		output->addByte(0);
 	}
 
+	uint8_t size = std::min<size_t>(std::numeric_limits<uint8_t>::max(), account.characters.size());
 	output->addByte(size);
 	for (uint8_t i = 0; i < size; i++) {
 		const std::string& character = account.characters[i];
@@ -119,13 +116,14 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 	}
 
 	//Add premium days
-	output->addByte(0);
 	if (g_config.getBoolean(ConfigManager::FREE_PREMIUM)) {
-		output->addByte(1);
-		output->add<uint32_t>(0);
+		output->add<uint16_t>(0xFFFF); //client displays free premium
+		//output->addByte(1);
+		//output->add<uint32_t>(0);
 	} else {
-		output->addByte(account.premiumDays > 0 ? 1 : 0);
-		output->add<uint32_t>(time(nullptr) + (account.premiumDays * 86400));
+		output->add<uint16_t>(account.premiumDays > 0 ? 1 : 0);
+		//output->addByte(account.premiumDays > 0 ? 1 : 0);
+		//output->add<uint32_t>(time(nullptr) + (account.premiumDays * 86400));
 	}
 
 	send(output);
@@ -221,15 +219,7 @@ void ProtocolLogin::onRecvFirstMessage(NetworkMessage& msg)
 		return;
 	}
 
-	// read authenticator token and stay logged in flag from last 128 bytes
-	msg.skipBytes((msg.getLength() - 128) - msg.getBufferPosition());
-	if (!Protocol::RSA_decrypt(msg)) {
-		disconnectClient("Invalid authentification token.", version);
-		return;
-	}
-
 	std::string authToken = msg.getString();
 
-	auto thisPtr = std::static_pointer_cast<ProtocolLogin>(shared_from_this());
-	g_dispatcher.addTask(createTask(std::bind(&ProtocolLogin::getCharacterList, thisPtr, accountName, password, authToken, version)));
+	g_dispatcher.addTask(createTask(std::bind(&ProtocolLogin::getCharacterList, this, accountName, password, authToken, version)));
 }

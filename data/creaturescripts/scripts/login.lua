@@ -1,4 +1,9 @@
 function onLogin(player)
+
+	-- Set test house owner to player who last logged in
+	local testHouse = House(1)
+	testHouse:setOwnerGuid(player:getGuid(), true)
+	
 	local loginStr = "Welcome to " .. configManager.getString(configKeys.SERVER_NAME) .. "!"
 	if player:getLastLoginSaved() <= 0 then
 		loginStr = loginStr .. " Please choose your outfit."

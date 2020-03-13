@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Dragon Rider" nameDescription="a dragon rider" race="blood" experience="3200" speed="250" manacost="0">
+	<health now="3600" max="3600" />
+	<look type="542" head="113" body="95" legs="76" feet="95" addons="3" corpse="6081" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="90" attack="75" />
+		<attack name="physical" interval="1500" chance="25" range="7" min="0" max="-200">
+			<attribute key="shootEffect" value="royalspear" />
+		</attack>
+		<attack name="fire" interval="2000" chance="25" range="1" min="-125" max="-245" />
+	</attacks>
+	<defenses armor="40" defense="40">
+		<defense name="healing" interval="3000" chance="20" min="150" max="250">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element energyPercent="20" />
+		<element physicalPercent="20" />
+		<element deathPercent="60" />
+		<element holyPercent="-10" />
+		<element icePercent="-30" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity fire="1" />
+		<immunity invisible="1" />
+		<immunity earth="1" />
+	</immunities>
+	<summons maxSummons="2">
+		<summon name="Dragon Lord Hatchling" interval="3000" chance="20" max="1" />
+		<summon name="Dragon Lord" interval="3000" chance="10" max="1" />
+	</summons>
+	<voices interval="5000" chance="10">
+		<voice sentence="HOW DARE YOU! LEAVE!" yell="1" />
+		<voice sentence="You will burn alive!" />
+		<voice sentence="BURN! Fool!" />
+		<voice sentence="Hsssss" />
+		<voice sentence="My dragonkin will consume you!" />
+		<voice sentence="Don't touch my treasures, they're mine!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="80" chance="23000" /><!-- gold coin -->
+		<item id="2152" countmax="12" chance="13000" /><!-- plat coin -->
+		<item id="7378" countmax="3" chance="30800" /><!-- royal spear -->
+		<item id="2381" chance="11850" /><!-- halberd -->
+		<item id="11243" chance="8000" /><!-- Dragon backpack -->
+		<item id="7430" chance="6400" /><!-- Dragonbone staff -->
+		<item id="2476" chance="8370" /><!-- knight armor -->
+		<item id="2434" chance="7020" /><!-- Dragon Hammer -->
+		<item id="2377" chance="8470" /><!-- two handed sword -->
+		<item id="2475" chance="5610" /><!-- warrior helmet -->
+		<item id="2430" chance="3280" /><!-- knight axe -->
+		<item id="2490" chance="6330" /><!-- dark helmet -->
+		<item id="11304" chance="1050" /><!-- Zaoan Legs -->
+		<item id="2133" chance="1740" /><!-- ruby necklace -->
+		<item id="2516" chance="1200" /><!-- Dragon Shield -->
+		<item id="2414" chance="510" /><!-- dragon lance -->
+		<item id="2492" chance="950" /><!-- Dragon Scale Mail -->
+		<item id="2539" chance="910" /><!-- Phoenix Shield -->
+		<item id="2498" chance="920" /><!-- Royal helmet -->
+		<item id="8858" chance="920" /><!-- Elemental Bow -->
+	</loot>
+</monster>

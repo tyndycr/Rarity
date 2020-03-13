@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="89" centery="67" centerz="8" radius="1">
+		<npc name="Furniture" x="0" y="0" z="8" spawntime="60" direction="2" />
+	</spawn>
+	<spawn centerx="50" centery="77" centerz="8" radius="1">
+		<npc name="Guard East" x="0" y="0" z="8" spawntime="60" direction="2" />
+	</spawn>
+	<spawn centerx="84" centery="77" centerz="8" radius="1">
+		<npc name="Guard West" x="0" y="0" z="8" spawntime="60" direction="2" />
+	</spawn>
+	<spawn centerx="48" centery="82" centerz="8" radius="1">
+		<monster name="Dummy South" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="47" centery="85" centerz="8" radius="1">
+		<monster name="Target East" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="67" centery="85" centerz="8" radius="1" />
+	<spawn centerx="47" centery="88" centerz="8" radius="1">
+		<monster name="Target East" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="67" centery="98" centerz="9" radius="1">
+		<monster name="Dragon Rider" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+</spawns>
