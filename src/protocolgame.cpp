@@ -271,7 +271,9 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	msg.skipBytes(1); // gamemaster flag
 
 	std::string sessionKey = msg.getString();
-
+	if (operatingSystem == CLIENTOS_FLASH) {
+		sessionKey = IOLoginData::generateFlashSessionKey(sessionKey);
+	}
 	auto sessionArgs = explodeString(sessionKey, "\n", 4);
 	if (sessionArgs.size() != 4) {
 		disconnect();
@@ -335,7 +337,8 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 		return;
 	}
 
-	uint32_t accountId = IOLoginData::gameworldAuthentication(accountName, password, characterName, token, tokenTime);
+	// Push OS type through game auth check
+	uint32_t accountId = IOLoginData::gameworldAuthentication(accountName, password, characterName, token, tokenTime, operatingSystem);
 	if (accountId == 0) {
 		disconnectClient("Account name or password is not correct.");
 		return;
