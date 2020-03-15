@@ -197,7 +197,7 @@ enum SpeakClasses : uint8_t {
 };
 
 enum MessageClasses : uint8_t {
-	MESSAGE_STATUS_CONSOLE_BLUE = 4, /*FIXME Blue message in the console*/
+	MESSAGE_STATUS_CONSOLE_BLUE = 22, /*Blue this debugs the flash client*/
 
 	MESSAGE_STATUS_CONSOLE_RED = 13, /*Red message in the console*/
 
