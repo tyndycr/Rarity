@@ -55,7 +55,7 @@ testMana:register()
 local testVoc = TalkAction("/vocation")
 
 function testVoc.onSay(player, words, param)
-	if Vocation(tonumber(param)) then
+	if Vocation(param) then
 		player:setVocation(param)
 		return true
 	end
