@@ -3,9 +3,9 @@ local testExp = TalkAction("/exp")
 function testExp.onSay(player, words, param)
 	if tonumber(param) then
 		player:addExperience(param, true)
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testExp:separator(" ")
@@ -16,9 +16,9 @@ local testCapacity = TalkAction("/cap")
 function testCapacity.onSay(player, words, param)
 	if tonumber(param) then
 		player:setCapacity(param*100)
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testCapacity:separator(" ")
@@ -30,9 +30,9 @@ function testHp.onSay(player, words, param)
 	if tonumber(param) then
 		player:setMaxHealth(param)
 		player:setHealth(param)
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testHp:separator(" ")
@@ -44,9 +44,9 @@ function testMana.onSay(player, words, param)
 	if tonumber(param) then
 		player:setMaxMana(param)
 		player:addMana(param)
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testMana:separator(" ")
@@ -57,9 +57,9 @@ local testVoc = TalkAction("/vocation")
 function testVoc.onSay(player, words, param)
 	if Vocation(param) then
 		player:setVocation(param)
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testVoc:separator(" ")
@@ -110,9 +110,9 @@ function testSkill.onSay(player, words, param)
 				player:addSkillTries(skillId, player:getVocation():getRequiredSkillTries(skillId, player:getSkillLevel(skillId) + 1) - player:getSkillTries(skillId))
 			end
 		end
-		return true
+		return false
 	end
-	return false
+	return true
 end
 
 testSkill:separator(" ")
@@ -143,11 +143,11 @@ local testLua = TalkAction("/lua")
 
 function testLua.onSay(player, words, param)
    if not player:getGroup():getAccess() then
-      return false
+      return true
    end
 
    if player:getAccountType() < ACCOUNT_TYPE_GOD then
-      return false
+      return true
    end
 
    sendToPlayerLuaCallResult(player, pcall(load(
