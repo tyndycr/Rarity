@@ -21,6 +21,7 @@
 #define FS_EVENTS_H_BD444CC0EE167E5777E4C90C766B36DC
 
 #include "luascript.h"
+#include "const.h"
 #include "creature.h"
 
 class Party;
@@ -34,6 +35,7 @@ class Events
 		int32_t creatureOnChangeOutfit = -1;
 		int32_t creatureOnAreaCombat = -1;
 		int32_t creatureOnTargetCombat = -1;
+		int32_t creatureOnHear = -1;
 
 		// Party
 		int32_t partyOnJoin = -1;
@@ -58,10 +60,12 @@ class Events
 		int32_t playerOnGainExperience = -1;
 		int32_t playerOnLoseExperience = -1;
 		int32_t playerOnGainSkillTries = -1;
+		int32_t playerOnWrapItem = -1;
 		int32_t playerOnInventoryUpdate = -1;
 
 		// Monster
 		int32_t monsterOnDropLoot = -1;
+		int32_t monsterOnSpawn = -1;
 	};
 
 	public:
@@ -73,6 +77,7 @@ class Events
 		bool eventCreatureOnChangeOutfit(Creature* creature, const Outfit_t& outfit);
 		ReturnValue eventCreatureOnAreaCombat(Creature* creature, Tile* tile, bool aggressive);
 		ReturnValue eventCreatureOnTargetCombat(Creature* creature, Creature* target);
+		void eventCreatureOnHear(Creature* creature, Creature* speaker, const std::string& words, SpeakClasses type);
 
 		// Party
 		bool eventPartyOnJoin(Party* party, Player* player);
@@ -97,10 +102,12 @@ class Events
 		void eventPlayerOnGainExperience(Player* player, Creature* source, uint64_t& exp, uint64_t rawExp);
 		void eventPlayerOnLoseExperience(Player* player, uint64_t& exp);
 		void eventPlayerOnGainSkillTries(Player* player, skills_t skill, uint64_t& tries);
+		void eventPlayerOnWrapItem(Player* player, Item* item);
 		void eventPlayerOnInventoryUpdate(Player* player, Item* item, slots_t slot, bool equip);
 
 		// Monster
 		void eventMonsterOnDropLoot(Monster* monster, Container* corpse);
+		bool eventMonsterOnSpawn(Monster* monster, const Position& position, bool startup, bool artificial);
 
 	private:
 		LuaScriptInterface scriptInterface;
